@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <style>
+    .bgRed {
+      background-color: red;
+    }
+    .bgGreen {
+      background-color: green;
+    }
+    .bgBlue {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <!-- 普通にクラスを指定する -->
+    <div class="bgRed">赤背景</div>
+
+    <!-- v-bindを使いdataのキー名を指定する -->
+    <div v-bind:class="divClass1">緑背景</div>
+
+    <!-- v-bindの省略形 -->
+    <div :class="divClass2">黄背景</div>
+
+    <!-- v-bindの値にオブジェクトを使う -->
+    <input :name="inputValue.name" :maxLength="inputValue.maxLength" :value="inputValue.value" />
+
+    <!-- v-bindでオブジェクトの内容を一括指定 -->
+    <input v-bind="{name: inputValue.name, maxLength: inputValue.maxLength, value: inputValue.value}" />
+
+    <!-- v-bindの一括指定をさらに短縮 -->
+    <input v-bind="inputValue" />
+
+    <!-- 属性の値に続けて:booleanでON/OFFを切り替えできる -->
+    <div :class="{bgBlue:!disabled}">背景色なし</div>
+    <div :class="{bgBlue:disabled}">青背景</div>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          divClass1: "bgGreen",
+          divClass2: "bgBlue",
+          inputValue: {
+            name: "input1",
+            maxLength: 5,
+            value: "value1"
+          },
+          disabled: true
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
