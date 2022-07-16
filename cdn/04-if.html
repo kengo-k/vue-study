@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <!-- v-showと同様にv-ifで表示のきりかえができるがv-showとは違いdisplay: noneになるわけではない -->
+    <!-- (DOMの出力の有無がきりかわる) -->
+    <div v-if="visible">表示されます!</div>
+    <div v-if="!visible">表示されません</div>
+
+    <!-- booleanの判定ではなく条件式の判定も使える -->
+    <!-- if-elseif-elseの並びの途中に関係ないタグ入れたらエラーになるので注意... -->
+    <div v-if="value === 0">valueは0です</div>
+    <div v-else-if="value === 1">valueは1です</div>
+    <div v-else>valueは0でも1でもありません</div>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          visible: true,
+          value: 2
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
