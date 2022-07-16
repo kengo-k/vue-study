@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <style>
+    button {
+      display: block;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <!-- v-on:イベント名でイベントハンドラを指定する。イベントハンドラはmethodsに定義する -->
+    <button v-on:click="onClick">クリックしてください</button>
+
+    <!-- v-on:の省略形として@が使える -->
+    <button @click="onClick">クリックしてください</button>
+
+    <!-- カッコ付きで引数を指定できる -->
+    <button @click="onClickWithArg(100)">クリックしてください(引数付き)</button>
+
+    <!-- 引数でイベントも同時にわたす -->
+    <button @click="onClickWithArgAndEvent(100, $event)">クリックしてください(引数とイベント付き)</button>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+        };
+      },
+      methods:  {
+        onClick(e) {
+          alert('onClick');
+          console.log(e);
+        },
+        onClickWithArg(arg) {
+          alert('onClickWithArg');
+          console.log(arg);
+        },
+        onClickWithArgAndEvent(arg, e) {
+          alert('onClickWithArgAndEvent');
+          console.log(arg);
+          console.log(e);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
