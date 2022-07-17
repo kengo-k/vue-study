@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <global-component></global-component>
+    <global-component></global-component>
+    <local-component></local-component>
+  </div>
+
+  <script>
+
+    // グローバルコンポーネントの例: Vue全体で利用可能なコンポーネントとして登録するパターン
+    Vue.component("global-component", {
+      template: `<div>{{message}}</div>`,
+      data() {
+        return {
+          message: "Hello Global Vue Component!"
+        };
+      }
+    });
+
+    // ローカルコンポーネント
+    // グローバルコンポーネントは使用していなくても読み込まれているので基本ローカルコンポーネントを使うほうがよい
+    const localComponent = {
+      template: `<div>{{message}}</div>`,
+      data() {
+        return {
+          message: "Hello Local Vue Component!"
+        }
+      }
+    }
+
+    const app = new Vue({
+      el: "#app",
+      components: {
+        "local-component": localComponent
+      },
+      data() {
+        return {
+          message: "Hello Vue!"
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
