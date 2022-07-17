@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <style>
+    .hasError {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <h1>フォームバリデーション: サブミット時チェック</h1>
+    <div v-show="errors.length > 0">
+      <ul>
+        <li v-for="(error) in errors">
+          {{error}}
+        </li>
+      </ul>
+    </div>
+    <form @submit.prevent="validate">
+      <label for="name">氏名</label>
+      <input id="name" type="text" v-model="inquiry.name" />
+      <br/>
+
+      <label for="email">メール</label>
+      <input id="email" type="email" v-model="inquiry.email" />
+      <br/>
+
+      <label for="text">お問い合わせ内容</label>
+      <input id="text" type="text" v-model="inquiry.text" />
+      <br/>
+
+      <input type="submit" value="送信" />
+    </form>
+
+    <h2>フォームバリデーション: リアルタイムチェック(computedを使う)</h2>
+    5文字以内で入力してください<br />
+    <div :class="{hasError:hasError}">文字数: {{message.length}}</div>
+    <input type="text" v-model="message" />
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          inquiry: {
+            name: '',
+            email: '',
+            text: ''
+          },
+          errors: [],
+          hasError: false,
+
+          // computedのmessageと名前がかぶってしまうので当初_messageとしていたが正しく動かず...
+          // どうやら_始まりの名前に特別ルールがあるかもしれない(未確認)
+          msg: ""
+        }
+      },
+      computed: {
+        message: {
+          get() {
+            console.log('get');
+            return this.msg;
+          },
+          set(newValue) {
+            console.log('set');
+            this.hasError = false;
+            if (newValue.length > 5) {
+              this.hasError = true;
+            }
+            return this.msg = newValue;
+          }
+        }
+      },
+      methods: {
+        validate() {
+          this.errors = [];
+          if (!this.inquiry.name) {
+            this.errors.push("お名前を入力してください");
+          }
+          if (!this.inquiry.email) {
+            this.errors.push("メールアドレスを入力してください");
+          }
+          if (!this.inquiry.text) {
+            this.errors.push("お問い合わせ内容を入力してください");
+          }
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
