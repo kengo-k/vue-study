@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <h1>データ一覧</h1>
+    <li v-for="(value, key) in this.$data">{{key}} : {{value}}</li>
+
+    <hr/>
+
+    <h1>新規データ追加</h1>
+    <label for="key">キー</label>
+    <input id="key" type="text" @change="setData('dataKey', $event)" /><br/>
+    <label for="value">値</label>
+    <input id="value" type="text" @change="setData('dataValue', $event)" />
+
+    <br/>
+    <button @click="register">登録</button>
+
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: "Hello Vue!",
+          person: {
+          },
+          // personにプロパティを追加するためのキー
+          dataKey: "",
+          // personのプロパティに対応する値
+          dataValue: ""
+        }
+      },
+      methods: {
+        setData(name, e) {
+          this[name] = e.target.value;
+        },
+        register() {
+          // 動的に追加するプロパティは$set経由でないとリアクティブにならない
+          // (リアクティブとはgetter/setterがプロパティごとに生成されて画面で反応できる状態であること)
+          this.$set(this.$data.person, this.dataKey, this.dataValue);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
