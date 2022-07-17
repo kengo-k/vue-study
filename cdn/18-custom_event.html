@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <child-component @my-event="parentMethod"/>
+  </div>
+
+  <script>
+
+    const ChildComponent = {
+      template: `
+      <div>
+        <button @click="childMethod">クリックしてください</button>
+      </div>
+      `,
+      methods: {
+        childMethod() {
+          console.log("ChildMethod called");
+          this.$emit('my-event', 100);
+        }
+      }
+    }
+
+    const app = new Vue({
+      el: "#app",
+      components: {
+        ChildComponent
+      },
+      data() {
+        return {
+          message: "Hello Vue!"
+        }
+      },
+      methods: {
+        parentMethod(e) {
+          console.log(`ParentMethod called: value=${e}`);
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
