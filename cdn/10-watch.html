@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <label for="price">価格</label>
+    <input id="price" type="number" :value="price" @change="setPrice" /><br/>
+
+    <label for="count">個数</label>
+    <input id="count" type="number" :value="count" @change="setCount" />
+
+    <hr/>
+    合計金額: {{price * count}}
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          price: 30,
+          count: 7
+        }
+      },
+      methods: {
+        setPrice(e) {
+          this.price = e.target.value;
+        },
+        setCount(e) {
+          this.count = e.target.value;
+        }
+      },
+      watch: {
+        price(value, oldValue) {
+          console.log('単価が変更されました');
+          console.log(`${oldValue} -> ${value}`);
+        },
+        count(value, oldValue) {
+          console.log('個数が変更されました');
+          console.log(`${oldValue} -> ${value}`);
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
