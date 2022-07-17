@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <user-info name="yamada" email="yamada@gmail.com"></user-info>
+    <user-info name="tanaka" email="tanaka@gmail.com"></user-info>
+  </div>
+
+  <script>
+
+    const UserInfoComponent = {
+      template: `
+      <div>
+        ユーザー名:
+        <span>{{name}}</span><br/>
+        メールアドレス:
+        <span>{{email}}</span>
+      </div>
+      `,
+      // propsの設定例。type以外にもrequiredなど指定できる。詳細: https://jp.vuejs.org/v2/api/#props
+      props: {
+        name: {
+          type: String
+        },
+        email: {
+          type: String
+        }
+      }
+    }
+
+    const app = new Vue({
+      el: "#app",
+      components: {
+        "user-info": UserInfoComponent
+      },
+      data() {
+        return {
+          message: "Hello Vue!"
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
