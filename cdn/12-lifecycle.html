@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    {{message}}
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: "Hello Vue!"
+        }
+      },
+
+      // フックを定義することで対応するライフサイクルで処理を実行できる
+      // 定義できるフックはドキュメントを参照:
+      // https://jp.vuejs.org/v2/api/#beforeCreate
+      created() {
+        console.log("created");
+      },
+      mounted() {
+        console.log("mounted");
+      }
+    })
+  </script>
+
+</body>
+</html>
