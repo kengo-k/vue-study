@@ -10,7 +10,11 @@
 <body>
 
   <div id="app">
-    <child-component @my-event="parentMethod"/>
+    <!-- 親子でイベントやりとり -->
+    <child-component @my-event="parentMethod"></child-component>
+
+    <!-- 親,子,孫でイベントやりとり -->
+    <foo></foo>
   </div>
 
   <script>
@@ -27,12 +31,58 @@
           this.$emit('my-event', 100);
         }
       }
+    };
+
+
+    const eventBus = new Vue();
+
+    const baz = {
+      template: `
+        <div>
+          <h1>孫です</h1>
+          <button @click="runBaz">クリック</button>
+        </div>
+      `,
+      methods: {
+        runBaz() {
+          eventBus.$emit("baz", 100);
+        }
+      }
     }
+
+    const bar = {
+      template: `
+        <div>
+          <h1>子です</h1>
+          <baz></baz>
+        </div>
+      `,
+      components: {
+        baz
+      }
+    };
+
+    const foo = {
+      template: `
+        <div>
+          <h1>親です</h1>
+          <bar></bar>
+        </div>
+      `,
+      components: {
+        bar
+      },
+      mounted() {
+        eventBus.$on("baz", value => {
+          console.log(`baz: value=${value}`);
+        });
+      }
+    };
 
     const app = new Vue({
       el: "#app",
       components: {
-        ChildComponent
+        ChildComponent, foo
       },
       data() {
         return {
