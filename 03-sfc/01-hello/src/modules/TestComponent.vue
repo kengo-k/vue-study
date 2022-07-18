@@ -34,7 +34,7 @@ export default {
   .parent {
     .child {
       width: 200px;
-      border: 1px solid red;
+      border: 1px solid $default-color;
     }
   }
 </style>
