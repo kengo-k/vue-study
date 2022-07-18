@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vue/cli": "^5.0.8"
+    "@vue/cli": "^5.0.8",
+    "html-webpack-plugin": "^5.5.0",
+    "preload-webpack-plugin": "^2.3.0"
   }
 }
