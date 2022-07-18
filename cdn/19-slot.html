@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <!-- slotの中身を指定しない場合は初期値が表示される -->
+    <my-component></my-component>
+    <br /><br /><hr />
+    <!-- タグ内にtemplateタグでslotに値を設定できる -->
+    <!-- templateなしでタグ内に記載した場合は名前なしslotとみなされる -->
+    <my-component>
+      <template v-slot:header>this is a header</template>
+      <!-- 省略記法 -->
+      <template #footer>this is a footer</template>
+      this is an additional text<br/>
+    </my-component>
+
+    <br/>
+    <hr/>
+
+    <!-- スコープ付きslot -->
+    <foo-component>
+      <template v-slot:default="props">
+        {{props.user.firstName}}
+      </template>
+    </foo-component>
+
+    <br/>
+    <hr/>
+
+    <foo-component>
+      <template v-slot:default="props"></template>
+    </foo-component>
+  </div>
+
+  <script>
+
+    const MyComponent = {
+      template: `
+      <div>
+        <slot name="header">ここはヘッダです</slot>
+        <h1>ここは共通部分です</h1>
+        <slot>ここは追加部分です</slot>
+        <slot name="footer">ここはフッタです</slot>
+      </div>
+      `
+    };
+
+    const FooComponent = {
+      template: `
+        <div>
+          Hello I am <slot :user="user">{{user.lastName}}</slot>.
+        </div>
+      `,
+      data() {
+        return {
+          user: {
+            firstName: "taro",
+            lastName: "yamada"
+          }
+        }
+      }
+    };
+
+    const app = new Vue({
+      el: "#app",
+      components: {
+        MyComponent, FooComponent
+      },
+      data() {
+        return {
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
