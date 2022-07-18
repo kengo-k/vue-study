@@ -1,5 +1,10 @@
 <template>
-  <div>{{message}}</div>
+  <div class="parent">
+    {{message}}
+    <div class="child">
+      SCSSスタイルテスト
+    </div>
+  </div>
 </template>
 
 <script>
@@ -21,9 +26,15 @@ export default {
 </style>
 
 // scopedを指定することでこのコンポーネント内に閉じたスタイルを定義できる
-<style scoped>
+<style scoped lang="scss">
   div {
     color: pink;
     font-size: xx-large;
+  }
+  .parent {
+    .child {
+      width: 200px;
+      border: 1px solid red;
+    }
   }
 </style>
