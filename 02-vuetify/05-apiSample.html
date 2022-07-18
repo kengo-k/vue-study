@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.5.55/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.3.10/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+
+  <div id="app">
+    <v-app>
+      <v-main>
+        <v-container fluid>
+          <v-row>
+            <v-col v-for="(dogType, index) in dogTypes" :key="index" cols="12" md="4">
+              <v-btn @click="fetchDogImages(index)" color="cyan" dark>{{dogType}}</v-btn>
+            </v-col>
+          </v-row>
+
+          <v-row v-show="dogImages.length > 0">
+            <v-col v-for="(img, index) in dogImages" :key="img" cols="12" sm="6" md="3">
+              <v-card>
+                <v-img :src="img"></v-img>
+              </v-card>
+            </v-col>
+          </v-row>
+
+        </v-container>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.3.10/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data() {
+        return {
+          dogTypes: ["akita", "beagle", "pug"],
+          dogImages: []
+        }
+      },
+      methods: {
+        async fetchDogImages(index) {
+          const apiPath = `https://dog.ceo/api/breed/${this.dogTypes[index]}/images`;
+          const res =
+            fetch(apiPath, {method: "get"})
+              .then(result => result.json());
+          this.render(await res);
+        },
+        render(res) {
+          this.dogImages = res.message;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
