@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <h1>Hello Vue Router!</h1>
+    <!-- router-linkで指定されたパスがクリックされたときrouter-view内にコンポーネントが表示される -->
+    <p>
+      <router-link to="/foo">Go to Foo</router-link>
+      <router-link to="/bar">Go to Bar</router-link>
+    </p>
+    <router-view></router-view>
+  </div>
+
+  <script>
+
+    const Foo = { template: '<div>foo</div>' };
+    const Bar = { template: '<div>bar</div>' };
+
+    // ルート情報を定義
+    const routes = [
+      { path: '/foo', component: Foo },
+      { path: '/bar', component: Bar }
+    ];
+
+    // VueRouterにルート情報を渡してインスタンス化
+    const router = new VueRouter({
+      routes
+    });
+
+    // Vueインスタンスの引数にVueRouterを渡す
+    const app = new Vue({
+      router
+    }).$mount('#app')
+  </script>
+
+</body>
+</html>
