@@ -17,10 +17,16 @@ export default {
   // たとえばcreatedは最初に作成された場合のみ実行されるので1 → 2に遷移しても呼ばれない
   // そのようなときはwatchで$routeオブジェクト自身を監視することでタイミングを判定できる
   watch: {
-    $route(to, from) {
-      console.log(to);
-      console.log(from);
+    $route(/*to, from*/) {
+      //console.log(to);
+      //console.log(from);
     }
+  },
+  // コンポーネント単位のナビゲーションガイド
+  beforeRouteLeave(to, from, next) {
+    console.log("item leave");
+    // ここで保存していないですがページを離れますか、を実装できる
+    next();
   }
 }
 </script>

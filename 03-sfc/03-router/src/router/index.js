@@ -47,7 +47,12 @@ const routes = [
   {
     path: "/item/:id",
     name: "Item",
-    component: Item
+    component: Item,
+    // ルート単位のナビゲーションガード
+    beforeEnter: (to, from, next) => {
+      console.log("enter item");
+      next();
+    }
   },
   {
     path: "/user",
@@ -71,6 +76,15 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
+
+// グローバルなナビゲーションガード
+// ルートによる遷移が発生する際に必ず呼ばれる
+// nextを呼び出すと次画面へ遷移する
+router.beforeEach((to, from, next) => {
+  //console.log(to);
+  //console.log(from);
+  next();
+} );
 
 export default router
