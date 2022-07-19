@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import BookList from "@/views/BookList.vue"
 import BookDetail from "@/components/BookDetail.vue"
 import Item from "@/views/Item.vue"
+import NotFound from "@/components/NotFound.vue"
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,14 @@ const routes = [
     path: "/item/:id",
     name: "Item",
     component: Item
+  },
+  {
+    // 該当するルートがない場合
+    path: "*",
+    // リダイレクトで任意のURLにとばすことができる
+    //redirect: "/"
+    // もしくはNotFound用のコンポーネントを指定してもよい
+    component: NotFound
   }
 ]
 
