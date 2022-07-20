@@ -1,22 +1,24 @@
 <template>
   <div>
-    <button @click="increment">+1</button>
-    <button @click="addCount">+10</button>
+    <button @click="incrementAction">+1</button>
+    <button @click="addCount">+20</button>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
   methods: {
-    increment() {
-      this.$store.dispatch("incrementAction");
-    },
+    ...mapActions(["incrementAction", "addCountAction"]),
+    // increment() {
+    //   this.$store.dispatch("incrementAction");
+    // },
     addCount() {
-      this.$store.dispatch("addCountAction", { value: 10 });
+      this.addCountAction({ value: 20 });
     }
   }
 }
