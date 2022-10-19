@@ -1,9 +1,14 @@
 <template>
-  <div>Hello,Vue!</div>
+  <div>Hello, {{ name }}!!</div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld"
+  name: "HelloWorld",
+  data() {
+    return {
+      name: "Vue"
+    }
+  }
 };
 </script>
