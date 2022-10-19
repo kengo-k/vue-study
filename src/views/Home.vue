@@ -1,11 +1,8 @@
 <template>
-  <HelloWorld
-    msg="Thank you for using our product. We're glad you're with us."
-  />
+  <HelloWorld />
 </template>
 
 <script>
-// @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
