@@ -1,1 +1,1 @@
-https://kengo-k-sample-vue.mdbgo.io/
+https://kengo-k-sample-vue.netlify.app
