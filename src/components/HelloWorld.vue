@@ -14,14 +14,15 @@
     <article>
       HTML要素の属性にdataの値を設定する場合は上記のような{{"\{\{ プロパティ名 \}\}"}}の構文を使うことができない。
       <div>
-        例: {{ wrongAttributeBindExample }}
+        例: {{ '<input type="text" value="\{\{ name \}\}" />' }}
       </div>
       属性にdataの値を設定するにはv-bindを使用する
       <div>
-        例: {{ vBindExample }} <input type="text" v-bind:value="name" />
+        例: {{ '<input type="text" v-bind:value="name" />' }} <input type="text" v-bind:value="name" />
       </div>
-      v-bindを指定する場合は{{ mustache }}ではなくダブルクオートの中に直接プロパティ名を指定する。固定文字列"name"を入れているわけではないので注意。
+      v-bindを指定する場合は{{ '\{\{ ... \}\}' }}ではなくダブルクオートの中に直接プロパティ名を指定する。固定文字列"name"を入れているわけではないので注意。
     </article>
+
   </div>
 
 </template>
@@ -31,10 +32,7 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      name: "Vue",
-      mustache: "{{ ... }}",
-      wrongAttributeBindExample: "<input type=\"text\" value=\"{{ name }}\" />",
-      vBindExample: "<input type=\"text\" v-bind:value=\"name\" />"
+      name: "Vue"
     }
   }
 };
