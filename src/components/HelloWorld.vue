@@ -34,11 +34,22 @@
       <div :style="{fontSize: fontSize, color: color}">CSS</div>
       <div :style="{fontSize, color}">CSS</div>
       <div :style="styles">CSS</div>
+
+      <div :class="{warning:true}">WARNING</div>
+      <div :class="{warning:false}">WARNING</div>
+      <div :class="classes">WARNING</div>
     </article>
 
   </div>
 
 </template>
+
+<style>
+  .warning {
+    border: 1px solid red;
+    color: red;
+  }
+</style>
 
 <script>
 export default {
@@ -56,6 +67,9 @@ export default {
       styles: {
         fontSize: "40px",
         color: "red"
+      },
+      classes: {
+        warning: true
       }
     }
   }
