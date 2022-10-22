@@ -24,6 +24,12 @@
 
       v-bind:xxxを使う場合はさらに省略記法として:xxxと記述することができる。上記の例の場合は、
       例: {{ '<input type="text" :value="name" />' }} <input type="text" :value="name" />
+
+      <br/>
+      <input :type="formAttrs.type" :placeholder="formAttrs.placeholder" /> <br/>
+      <input v-bind="{type:formAttrs.type, placeholder:formAttrs.placeholder}" /> <br/>
+      <input v-bind="formAttrs" /> <br/>
+
     </article>
 
   </div>
@@ -35,7 +41,11 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      name: "Vue"
+      name: "Vue",
+      formAttrs: {
+        placeholder: "your email",
+        type: "email" ,
+      }
     }
   }
 };
