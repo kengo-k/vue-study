@@ -21,6 +21,9 @@
         例: {{ '<input type="text" v-bind:value="name" />' }} <input type="text" v-bind:value="name" />
       </div>
       v-bindを指定する場合は{{ '\{\{ ... \}\}' }}ではなくダブルクオートの中に直接プロパティ名を指定する。固定文字列"name"を入れているわけではないので注意。
+
+      v-bind:xxxを使う場合はさらに省略記法として:xxxと記述することができる。上記の例の場合は、
+      例: {{ '<input type="text" :value="name" />' }} <input type="text" :value="name" />
     </article>
 
   </div>
