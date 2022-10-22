@@ -30,6 +30,10 @@
       <input v-bind="{type:formAttrs.type, placeholder:formAttrs.placeholder}" /> <br/>
       <input v-bind="formAttrs" /> <br/>
 
+      <div :style="style">CSS</div>
+      <div :style="{fontSize: fontSize, color: color}">CSS</div>
+      <div :style="{fontSize, color}">CSS</div>
+      <div :style="styles">CSS</div>
     </article>
 
   </div>
@@ -45,6 +49,13 @@ export default {
       formAttrs: {
         placeholder: "your email",
         type: "email" ,
+      },
+      style: "font-size: 40px; color: red",
+      fontSize: "40px",
+      color: "red",
+      styles: {
+        fontSize: "40px",
+        color: "red"
       }
     }
   }
