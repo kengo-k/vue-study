@@ -21,7 +21,7 @@ marked.setOptions({
 });
 
 export default {
-  name: "SourceComponent",
+  name: "Code",
   props: {
     code: String
   },

@@ -11,10 +11,10 @@
     v-if, v-else-if, v-elseは上から順番に並んで記述しなければならない。途中に要素などを追加するとエラーになる。
   </div>
 
-  <CardComponent title="v-ifを使用して条件に応じて表示する要素を切り替える">
-    <ParagraphComponent>
+  <Card title="v-ifを使用して条件に応じて表示する要素を切り替える">
+    <Para>
       v-showを使用して非表示にする場合display:noneにより画面に表示されなくなるがv-ifの場合は要素そのものが出力されなくなる。
-    </ParagraphComponent>
+    </Para>
     <SwitchCodeView :code="sources.example1">
       <div v-show="visible">display:noneにより非表示になります</div>
       <button
@@ -23,7 +23,7 @@
         toggle visible
       </button>
     </SwitchCodeView>
-  </CardComponent>
+  </Card>
 
 </template>
 
@@ -31,8 +31,8 @@
 </style>
 
 <script>
-import CardComponent from "@/components/CardComponent.vue";
-import ParagraphComponent from "@/components/ParagraphComponent.vue";
+import Card from "@/components/CardComponent.vue";
+import Para from "@/components/ParagraphComponent.vue";
 import SwitchCodeView from "@/components/SwitchCodeView.vue";
 
 const sources = {
@@ -49,7 +49,7 @@ const switches = {
 
 export default {
   name: "Topic03VIf",
-  components: { CardComponent, ParagraphComponent, SwitchCodeView },
+  components: { Card, Para, SwitchCodeView },
   data() {
     return {
       visible: true,

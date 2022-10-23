@@ -15,7 +15,7 @@
 <script>
 
 export default {
-  name: "CardComponent",
+  name: "Card",
   props: {
     title: String
   },

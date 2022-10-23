@@ -17,7 +17,7 @@
     </button>
   </div>
   <div v-show="selectedTab === 1">
-    <SourceComponent :code="code" />
+    <Code :code="code" />
   </div>
   <div v-show="selectedTab === 2">
     <slot></slot>
@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import SourceComponent from "@/components/SourceComponent.vue";
+import Code from "@/components/SourceComponent.vue";
 export default {
   name: "SwitchCodeView",
   components: {
-    SourceComponent
+    Code
   },
   props: {
     code: String

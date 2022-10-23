@@ -7,6 +7,6 @@
 <script>
 
 export default {
-  name: "ParagraphComponent"
+  name: "Para"
 };
 </script>
