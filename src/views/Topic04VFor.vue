@@ -30,6 +30,13 @@
       </li>
     </ul>
 
+    <div v-html="md"/>
+
+    <textarea>
+      # Hello
+      ## world
+    </textarea>
+
   </div>
 
 </template>
@@ -38,6 +45,30 @@
 </style>
 
 <script>
+
+import { marked } from 'marked'
+import prism from 'prismjs'
+import "prism-themes/themes/prism-dracula.css"
+
+console.log(prism.languages);
+
+marked.setOptions({
+  highlight: function(code, lang) {
+    if (prism.languages[lang]) {
+      return prism.highlight(code, prism.languages[lang], lang);
+    } else {
+      return code;
+    }
+  }
+});
+
+const text = `
+# hello
+\`\`\`js
+const x = 5;
+\`\`\`
+`;
+
 export default {
   name: "Topic04VFor",
   data() {
@@ -47,7 +78,8 @@ export default {
         title: "Vue Basics",
         author: "Yamada Taro",
         price: 2980
-      }
+      },
+      md: marked(text)
     }
   }
 };
