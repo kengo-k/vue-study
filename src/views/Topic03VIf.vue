@@ -16,12 +16,17 @@
       v-showを使用して非表示にする場合display:noneにより画面に表示されなくなるがv-ifの場合は要素そのものが出力されなくなる。
     </Para>
     <SwitchCodeView :code="sources.example1">
-      <div v-show="visible">display:noneにより非表示になります</div>
-      <button
-        v-on:click="toggle('visible')"
-        class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
-        toggle visible
-      </button>
+      <Card title="実行結果">
+        <ul>
+          <li>visible: {{ visible }}</li>
+          <li v-show="visible">display:noneにより非表示になります</li>
+        </ul>
+        <button
+          v-on:click="toggle('visible')"
+          class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+          toggle visible
+        </button>
+      </Card>
     </SwitchCodeView>
   </Card>
 
@@ -38,7 +43,10 @@ import SwitchCodeView from "@/components/SwitchCodeView.vue";
 const sources = {
   example1: `
 \`\`\`markup
-  <div v-show="visible">display:noneにより非表示になります</div>
+<ul>
+  <li>visible: {{ visible }}</li>
+  <li v-show="visible">display:noneにより非表示になります</li>
+</ul>
 \`\`\`
 `
 };
