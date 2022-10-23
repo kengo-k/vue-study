@@ -1,16 +1,8 @@
 <template>
   <div class="inline-flex border-b border-gray-200 dark:border-gray-700">
-    <button
-      v-on:click="switchTab(1)"
-      :class="viewClass">
-      Code
-    </button>
+    <button v-on:click="switchTab(1)" :class="viewClass">Code</button>
 
-    <button
-      v-on:click="switchTab(2)"
-      :class="codeClass">
-      View
-    </button>
+    <button v-on:click="switchTab(2)" :class="codeClass">View</button>
   </div>
   <div v-show="selectedTab === 1">
     <Code :code="code" />
@@ -23,29 +15,49 @@
 <script>
 const buildClass = (classes) => {
   const clsObj = {}
-  for(const cls of classes) {
+  for (const cls of classes) {
     clsObj[cls] = true
   }
   return clsObj
 }
-const baseClasses = ["h-10", "px-4", "py-2", "-mb-px", "text-sm", "text-center", "bg-transparent", "border-b-2", "sm:text-base", "whitespace-nowrap", "focus:outline-none"];
+const baseClasses = [
+  'h-10',
+  'px-4',
+  'py-2',
+  '-mb-px',
+  'text-sm',
+  'text-center',
+  'bg-transparent',
+  'border-b-2',
+  'sm:text-base',
+  'whitespace-nowrap',
+  'focus:outline-none',
+]
 const baseClass = buildClass(baseClasses)
-const activeClass = Object.assign({}, baseClass, buildClass(["text-blue-600", "border-blue-500"]))
-const inactiveClass = Object.assign({}, baseClass, buildClass(["text-gray-700", "hover:border-gray-400", "border-transparent"]))
-import Code from "@/components/Code.vue";
+const activeClass = Object.assign(
+  {},
+  baseClass,
+  buildClass(['text-blue-600', 'border-blue-500'])
+)
+const inactiveClass = Object.assign(
+  {},
+  baseClass,
+  buildClass(['text-gray-700', 'hover:border-gray-400', 'border-transparent'])
+)
+import Code from '@/components/Code.vue'
 export default {
-  name: "SwitchCodeView",
+  name: 'SwitchCodeView',
   components: {
-    Code
+    Code,
   },
   props: {
-    code: String
+    code: String,
   },
   data() {
     return {
       selectedTab: 1,
       viewClass: activeClass,
-      codeClass: inactiveClass
+      codeClass: inactiveClass,
     }
   },
   methods: {
@@ -60,7 +72,7 @@ export default {
         this.viewClass = inactiveClass
         this.codeClass = activeClass
       }
-    }
-  }
-};
+    },
+  },
+}
 </script>

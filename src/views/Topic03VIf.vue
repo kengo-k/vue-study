@@ -1,5 +1,4 @@
 <template>
-
   <div class="border-2 m-4">
     <div v-if="isVisible">何も表示されません</div>
     v-showによる非表示時にはdisplay:noneにより画面に表示されなくなるがv-ifの場合は要素そのものが出力されなくなる。
@@ -8,7 +7,8 @@
     <div v-else-if="status === 500">Server Error</div>
     <div v-else>Success</div>
 
-    v-if, v-else-if, v-elseは上から順番に並んで記述しなければならない。途中に要素などを追加するとエラーになる。
+    v-if, v-else-if,
+    v-elseは上から順番に並んで記述しなければならない。途中に要素などを追加するとエラーになる。
   </div>
 
   <Card title="v-ifを使用して条件に応じて表示する要素を切り替える">
@@ -23,22 +23,21 @@
         </ul>
         <button
           v-on:click="toggle('visible')"
-          class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+          class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+        >
           toggle visible
         </button>
       </Card>
     </SwitchCodeView>
   </Card>
-
 </template>
 
-<style>
-</style>
+<style></style>
 
 <script>
-import Card from "@/components/Card.vue";
-import Para from "@/components/Para.vue";
-import SwitchCodeView from "@/components/SwitchCodeView.vue";
+import Card from '@/components/Card.vue'
+import Para from '@/components/Para.vue'
+import SwitchCodeView from '@/components/SwitchCodeView.vue'
 
 const sources = {
   example1: `
@@ -48,15 +47,15 @@ const sources = {
   <li v-show="visible">display:noneにより非表示になります</li>
 </ul>
 \`\`\`
-`
-};
+`,
+}
 
 const switches = {
-  example1: true
+  example1: true,
 }
 
 export default {
-  name: "Topic03VIf",
+  name: 'Topic03VIf',
   components: { Card, Para, SwitchCodeView },
   data() {
     return {
@@ -70,7 +69,7 @@ export default {
     // 任意のbool値のトグルする
     toggle(key) {
       this[key] = !this[key]
-    }
-  }
-};
+    },
+  },
+}
 </script>

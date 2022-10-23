@@ -1,19 +1,14 @@
 <template>
-
   <div class="border-2 m-4">
     <ul>
-      <li v-for="name in names" :key="name">
-        name is {{ name }}
-      </li>
+      <li v-for="name in names" :key="name">name is {{ name }}</li>
     </ul>
 
     v-for="item in items"で配列itemsから要素を先頭から取り出しながらループする。
     inではなくofでも動作する
 
     <ul>
-      <li v-for="name of names" :key="name">
-        name is {{ name }}
-      </li>
+      <li v-for="name of names" :key="name">name is {{ name }}</li>
     </ul>
 
     値を取り出すとき指定する要素の変数に続けて2番目の変数を指定するとインデックスを受け取ることができる。
@@ -29,27 +24,23 @@
         {{ i }}: {{ key }} = {{ value }}
       </li>
     </ul>
-
   </div>
-
 </template>
 
 <script>
-
 export default {
-  name: "Topic04VFor",
+  name: 'Topic04VFor',
   data() {
     return {
-      names: ["Yamada", "Tanaka", "Suzuki"],
+      names: ['Yamada', 'Tanaka', 'Suzuki'],
       bookInfo: {
-        title: "Vue Basics",
-        author: "Yamada Taro",
-        price: 2980
-      }
+        title: 'Vue Basics',
+        author: 'Yamada Taro',
+        price: 2980,
+      },
     }
-  }
-};
+  },
+}
 </script>
 
-<style>
-</style>
+<style></style>

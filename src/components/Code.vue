@@ -1,34 +1,33 @@
 <template>
-  <div v-html="md"/>
+  <div v-html="md" />
 </template>
 
 <script>
-
 import { marked } from 'marked'
 import prism from 'prismjs'
-import "prism-themes/themes/prism-dracula.css"
+import 'prism-themes/themes/prism-dracula.css'
 
-console.log(prism.languages);
+console.log(prism.languages)
 
 marked.setOptions({
-  highlight: function(code, lang) {
+  highlight: function (code, lang) {
     if (prism.languages[lang]) {
-      return prism.highlight(code, prism.languages[lang], lang);
+      return prism.highlight(code, prism.languages[lang], lang)
     } else {
-      return code;
+      return code
     }
-  }
-});
+  },
+})
 
 export default {
-  name: "Code",
+  name: 'Code',
   props: {
-    code: String
+    code: String,
   },
   data() {
     return {
-      md: marked(this.code)
+      md: marked(this.code),
     }
-  }
-};
+  },
+}
 </script>
