@@ -53,7 +53,7 @@
 
 <script>
 export default {
-  name: "Home",
+  name: "Topic01VBind",
   data() {
     return {
       name: "Vue!!",
