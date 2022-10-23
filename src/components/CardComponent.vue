@@ -5,9 +5,9 @@
     </div>
     <div class="mt-2">
       <a href="#" class="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline" tabindex="0" role="link">
-        <slot name="title"></slot>
+        {{ title }}
       </a>
-      <slot name="content"></slot>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -16,6 +16,9 @@
 
 export default {
   name: "CardComponent",
+  props: {
+    title: String
+  },
   data() {
     return {
     }
