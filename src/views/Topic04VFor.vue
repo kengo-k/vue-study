@@ -30,47 +30,26 @@
       </li>
     </ul>
 
-    <div v-html="md"/>
-
-    <textarea>
-      # Hello
-      ## world
-    </textarea>
+    <SourceComponent />
 
   </div>
 
 </template>
 
-<style>
-</style>
-
 <script>
 
-import { marked } from 'marked'
-import prism from 'prismjs'
-import "prism-themes/themes/prism-dracula.css"
+import SourceComponent from "@/components/SourceComponent.vue";
 
-console.log(prism.languages);
-
-marked.setOptions({
-  highlight: function(code, lang) {
-    if (prism.languages[lang]) {
-      return prism.highlight(code, prism.languages[lang], lang);
-    } else {
-      return code;
-    }
-  }
-});
-
-const text = `
-# hello
-\`\`\`js
-const x = 5;
-\`\`\`
-`;
+// const text = `
+// # hello
+// \`\`\`js
+// const x = 5;
+// \`\`\`
+// `;
 
 export default {
   name: "Topic04VFor",
+  components: { SourceComponent },
   data() {
     return {
       names: ["Yamada", "Tanaka", "Suzuki"],
@@ -78,9 +57,11 @@ export default {
         title: "Vue Basics",
         author: "Yamada Taro",
         price: 2980
-      },
-      md: marked(text)
+      }
     }
   }
 };
 </script>
+
+<style>
+</style>
