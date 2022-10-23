@@ -30,7 +30,7 @@
       </li>
     </ul>
 
-    <SourceComponent />
+    <SourceComponent :code="sources.simpleJs" />
 
   </div>
 
@@ -40,12 +40,13 @@
 
 import SourceComponent from "@/components/SourceComponent.vue";
 
-// const text = `
-// # hello
-// \`\`\`js
-// const x = 5;
-// \`\`\`
-// `;
+const sources = {
+  simpleJs: `
+\`\`\`js
+const x = 500;
+\`\`\`
+`
+};
 
 export default {
   name: "Topic04VFor",
@@ -57,7 +58,8 @@ export default {
         title: "Vue Basics",
         author: "Yamada Taro",
         price: 2980
-      }
+      },
+      sources
     }
   }
 };

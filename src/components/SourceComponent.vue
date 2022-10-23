@@ -20,18 +20,14 @@ marked.setOptions({
   }
 });
 
-const text = `
-# hello
-\`\`\`js
-const x = 5;
-\`\`\`
-`;
-
 export default {
   name: "SourceComponent",
+  props: {
+    code: String
+  },
   data() {
     return {
-      md: marked(text)
+      md: marked(this.code)
     }
   }
 };
