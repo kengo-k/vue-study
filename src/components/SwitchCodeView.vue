@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Code from "@/components/SourceComponent.vue";
+import Code from "@/components/Code.vue";
 export default {
   name: "SwitchCodeView",
   components: {

@@ -31,8 +31,8 @@
 </style>
 
 <script>
-import Card from "@/components/CardComponent.vue";
-import Para from "@/components/ParagraphComponent.vue";
+import Card from "@/components/Card.vue";
+import Para from "@/components/Para.vue";
 import SwitchCodeView from "@/components/SwitchCodeView.vue";
 
 const sources = {
