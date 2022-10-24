@@ -8,7 +8,9 @@
     <Code :code="code" />
   </div>
   <div v-show="selectedTab === 2">
-    <slot></slot>
+    <Card title="実行結果">
+      <slot></slot>
+    </Card>
   </div>
 </template>
 
@@ -45,10 +47,13 @@ const inactiveClass = Object.assign(
   buildClass(['text-gray-700', 'hover:border-gray-400', 'border-transparent'])
 )
 import Code from '@/components/Code.vue'
+import Card from '@/components/Card.vue'
+
 export default {
   name: 'SwitchCodeView',
   components: {
     Code,
+    Card,
   },
   props: {
     code: String,
