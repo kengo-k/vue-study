@@ -5,7 +5,7 @@
     <button v-on:click="switchTab(2)" :class="codeClass">View</button>
   </div>
   <div v-show="selectedTab === 1">
-    <Code :code="code" />
+    <Code :code="code" :lang="lang" />
   </div>
   <div v-show="selectedTab === 2">
     <Card title="実行結果">
@@ -57,6 +57,7 @@ export default {
   },
   props: {
     code: String,
+    lang: String,
   },
   data() {
     return {

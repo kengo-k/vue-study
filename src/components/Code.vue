@@ -1,5 +1,5 @@
 <template>
-  <div v-html="md" />
+  <div v-html="getHtml()" />
 </template>
 
 <script>
@@ -23,11 +23,15 @@ export default {
   name: 'Code',
   props: {
     code: String,
+    lang: String,
   },
-  data() {
-    return {
-      md: marked(this.code),
-    }
+  methods: {
+    getHtml() {
+      const code = `\`\`\`${this.lang}\n${this.code}\n\`\`\``
+      console.log('code:', this.code)
+      console.log('lang:', this.lang)
+      return marked(code)
+    },
   },
 }
 </script>
